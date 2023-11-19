@@ -6,6 +6,7 @@ import com.example.util.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class BoardDAO {
     PreparedStatement stmt = null;
     ResultSet rs = null;
 
-    private final String BOARD_INSERT = "insert into BOARD (category, title, writer, content) values (?,?,?,?)";
-    private final String BOARD_UPDATE = "update BOARD set category=? , title=?, writer=?, content=? where seq=?";
+    private final String BOARD_INSERT = "insert into BOARD (category, title, writer, content,img) values (?,?,?,?,?)";
+    private final String BOARD_UPDATE = "update BOARD set category=? , title=?, writer=?, content=?, img=? where seq=?";
     private final String BOARD_DELETE = "delete from BOARD  where seq=?";
     private final String BOARD_GET = "select * from BOARD  where seq=?";
     private final String BOARD_LIST = "select * from BOARD order by seq desc";
@@ -31,6 +32,8 @@ public class BoardDAO {
             stmt.setString(2, vo.getTitle());
             stmt.setString(3, vo.getWriter());
             stmt.setString(4, vo.getContent());
+            stmt.setString(5, vo.getImg());
+
             stmt.executeUpdate();
             return 1;
         } catch (Exception e) {
@@ -61,6 +64,8 @@ public class BoardDAO {
             stmt.setString(3, vo.getWriter());
             stmt.setString(4, vo.getContent());
             stmt.setInt(5, vo.getSeq());
+            stmt.setString(6, vo.getImg());
+
 
 
             System.out.println(vo.getCategory() + "-" + vo.getTitle() + "-" + vo.getWriter() + "-" + vo.getContent() + "-" + vo.getSeq());
@@ -85,6 +90,7 @@ public class BoardDAO {
                 one.setSeq(rs.getInt("seq"));
                 one.setCategory(rs.getString("category"));
                 one.setTitle(rs.getString("title"));
+                one.setImg(rs.getString("img"));
                 one.setWriter(rs.getString("writer"));
                 one.setContent(rs.getString("content"));
                 one.setCnt(rs.getInt("cnt"));
@@ -109,6 +115,7 @@ public class BoardDAO {
                 one.setCategory(rs.getString("category"));
                 one.setTitle(rs.getString("title"));
                 one.setWriter(rs.getString("writer"));
+                one.setImg(rs.getString("img"));
                 one.setContent(rs.getString("content"));
                 one.setRegdate(rs.getDate("regdate"));
                 one.setCnt(rs.getInt("cnt"));
@@ -120,4 +127,24 @@ public class BoardDAO {
         }
         return list;
     }
+
+    public  String getPhotoFilename(int seq){
+        String filename = null;
+        try {
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(BOARD_GET);
+            stmt.setInt(1, seq);
+            rs = stmt.executeQuery();
+            if(rs.next()){
+                filename = rs.getString("img");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("===> JDBC로 getPhotoFilename() 기능 처리");
+        return filename;
+    }
+
+
 }

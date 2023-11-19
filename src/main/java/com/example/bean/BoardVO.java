@@ -9,6 +9,16 @@ public class BoardVO {
     private String content;
     private Date regdate;
 
+    private String img;
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public String getCategory() {
         return category;
     }
