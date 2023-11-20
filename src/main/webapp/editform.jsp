@@ -27,7 +27,7 @@
 <tr><td>Writer:</td><td><input type="text" name="writer" value="<%= u.getWriter()%>" /></td></tr>
 	<tr>
 		<td> Photo file</td> <td><input type="file" name="img" value="${vo.getImg()}">
-		<c:if test="${vo.getImg() ne ''}"><br/> <img src="${pageContext.request.contextPath}/upload/${vo.getImg()}" class="img"></c:if></td>
+		<c:if test="${vo.getImg() ne ''}"><br/> <img width="500px" src="${pageContext.request.contextPath}/upload/${vo.getImg()}" class="img"></c:if></td>
 
 	</tr>
 <tr><td>Content:</td><td><textarea cols="50" rows="5" name="content"><%= u.getContent()%></textarea></td></tr>

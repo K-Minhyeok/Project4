@@ -19,7 +19,7 @@
 <%
   BoardDAO boardDAO = new BoardDAO();
   String id = request.getParameter("id");
-  BoardVO u = boardDAO.getBoard(Integer.parseInt("id"));
+  BoardVO u = boardDAO.getBoard(Integer.parseInt(id));
   request.setAttribute("vo",u);
 %>
 
@@ -40,7 +40,7 @@
 </tr>
 <tr>
   <td> Photo file</td> <td><c:if test="${vo.getImg() ne''}"><br/>
-  <img src="${pageContext.request.contextPath}/upload/${vo.getImg()}" class="img"></c:if></td>
+  <img width="500px" src="${pageContext.request.contextPath}/upload/${vo.getImg()}" class="img"></c:if></td>
 </tr>
 
 </table>
