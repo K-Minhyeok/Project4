@@ -5,23 +5,23 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>Project4</artifactId>
+  <artifactId>project_2</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Project4</name>
+  <name>project_2</name>
   <packaging>war</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
     <junit.version>5.9.2</junit.version>
   </properties>
 
   <dependencies>
 <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-      <version>5.0.0</version>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
 <dependency>
@@ -30,18 +30,13 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>${junit.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
-      <dependency>
-          <groupId>org.mariadb.jdbc</groupId>
-          <artifactId>mariadb-java-client</artifactId>
-          <version>3.1.4</version>
-      </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
       <!-- https://mvnrepository.com/artifact/jstl/jstl -->
       <dependency>
           <groupId>jstl</groupId>
@@ -49,11 +44,12 @@
           <version>1.2</version>
       </dependency>
 
-      <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+
+      <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
       <dependency>
-          <groupId>mysql</groupId>
-          <artifactId>mysql-connector-java</artifactId>
-          <version>8.0.28</version>
+          <groupId>org.mariadb.jdbc</groupId>
+          <artifactId>mariadb-java-client</artifactId>
+          <version>3.1.4</version>
       </dependency>
 
 
@@ -62,29 +58,6 @@
           <groupId>servlets.com</groupId>
           <artifactId>cos</artifactId>
           <version>05Nov2002</version>
-      </dependency>
-
-      <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
-      <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>javax.servlet-api</artifactId>
-          <version>3.0.1</version>
-          <scope>provided</scope>
-      </dependency>
-
-
-      <dependency>
-          <groupId>javax.servlet.jsp</groupId>
-          <artifactId>jsp-api</artifactId>
-          <version>2.2</version>
-          <scope>provided</scope>
-      </dependency>
-
-      <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>jstl</artifactId>
-          <version>1.2</version>
-          <scope>provided</scope>
       </dependency>
 
 
